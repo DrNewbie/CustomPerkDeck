@@ -61,9 +61,10 @@ if SkillTreeTweakData then
 						"small_ecm"
 					},
 					cost = 0,
+					texture_bundle_folder = "ecm_jammer",
 					icon_xy = {
-						1,
-						4
+						0,
+						0
 					},
 					name_id = "hacker_tier_1_name",
 					desc_id = "hacker_tier_1_desc"
@@ -75,9 +76,10 @@ if SkillTreeTweakData then
 						"player_passive_health_multiplier_3"
 					},
 					cost = 0,
+					texture_bundle_folder = "ecm_jammer",
 					icon_xy = {
-						2,
-						1
+						1,
+						0
 					},
 					name_id = "hacker_tier_3_name",
 					desc_id = "hacker_tier_3_desc"
@@ -89,9 +91,9 @@ if SkillTreeTweakData then
 						"player_hacker_kill_health"
 					},
 					cost = 0,
-					texture_bundle_folder = "ecp",
+					texture_bundle_folder = "ecm_jammer",
 					icon_xy = {
-						0,
+						2,
 						0
 					},
 					name_id = "hacker_tier_5_name",
@@ -104,9 +106,9 @@ if SkillTreeTweakData then
 						"player_hacker_kill_dodge"
 					},
 					cost = 0,
-					texture_bundle_folder = "max",
+					texture_bundle_folder = "ecm_jammer",
 					icon_xy = {
-						0,
+						3,
 						0
 					},
 					name_id = "hacker_tier_7_name",
@@ -116,13 +118,14 @@ if SkillTreeTweakData then
 				{
 					custom = true,
 					upgrades = {
+						"player_hacker_crew_kill_health",
 						"player_passive_loot_drop_multiplier"
 					},
 					cost = 0,
 					texture_bundle_folder = "ecm_jammer",
 					icon_xy = {
-						6,
-						3
+						0,
+						1
 					},
 					name_id = "hacker_tier_9_name",
 					desc_id = "hacker_tier_9_desc"

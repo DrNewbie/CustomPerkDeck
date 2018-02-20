@@ -18,6 +18,6 @@
 	"hacker_tier_7_name":"Kluge",
 	"hacker_tier_7_desc":"Killing at least ##1## enemy while the feedback effect or jamming effect is active will grant ##20## dodge for ##30## seconds.",
 	
-	"hacker_tier_9_name":"Botnet (Not Working)",
+	"hacker_tier_9_name":"Botnet",
 	"hacker_tier_9_desc":"Crew members killing enemies while the feedback effect is active will regenerate ##10## health."
 }
