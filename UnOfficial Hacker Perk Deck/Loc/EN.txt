@@ -1,0 +1,23 @@
+{
+	"bm_grenade_small_ecm":"Pocket ECM Devices",
+	"bm_grenade_small_ecm_desc":" ",
+	"bm_menu_skill_locked_small_ecm":"Requires the Hacker perk deck equipped",
+
+	"hacker_perk_name":"Hacker",
+	"hacker_perk_desc":" ",
+	
+	"hacker_tier_1_name":"Code Glitch",
+	"hacker_tier_1_desc":"Unlocks and equips the Pocket ECM Devices.\n\nWhile in game you can use the throwable key to activate the Pocket ECM Devices.\n\nActivating the Pocket ECM Devices before the alarm is raised will tigger the jamming effect disabling all electronics and pagers for a ##4## second duration."
+	
+	"hacker_tier_3_name":"OpSec",
+	"hacker_tier_3_desc":"You gain ##20%## more health.",
+	
+	"hacker_tier_5_name":"Bit Decay",
+	"hacker_tier_5_desc":"Killing an enemy while the feedback effect is active will regenerate ##20## health.",
+	
+	"hacker_tier_7_name":"Kluge",
+	"hacker_tier_7_desc":"Killing at least ##1## enemy while the feedback effect or jamming effect is active will grant ##20## dodge for ##30## seconds.",
+	
+	"hacker_tier_9_name":"Botnet (Not Working)",
+	"hacker_tier_9_desc":"Crew members killing enemies while the feedback effect is active will regenerate ##10## health."
+}

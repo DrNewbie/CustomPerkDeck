@@ -1,0 +1,17 @@
+<mod name="UnOfficial Hacker Perk Deck">
+	<AssetUpdates id="21989" version="6" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+	<Localization directory="Loc" default="EN.txt"/>
+	<AddFiles directory="Assets">
+		<texture path="guis/dlcs/ecm_jammer/textures/pd2/specialization/icons_atlas" force="true"/>
+		<texture path="guis/dlcs/ecm_jammer/textures/pd2/blackmarket/icons/grenades/small_ecm" force="true"/>
+	</AddFiles>
+	<Hooks directory="Hooks">
+		<hook file="skilltreetweakdata.lua" source_file="lib/tweak_data/skilltreetweakdata"/>
+		<hook file="upgradestweakdata.lua" source_file="lib/tweak_data/upgradestweakdata"/>
+		<hook file="projectilestweakdata.lua" source_file="lib/tweak_data/blackmarket/projectilestweakdata"/>
+		<hook file="playermanager.lua" source_file="lib/managers/playermanager"/>
+		<hook file="ecmjammerbase.lua" source_file="lib/units/equipment/ecm_jammer/ecmjammerbase"/>
+		<hook file="copdamage.lua" source_file="lib/units/enemies/cop/copdamage"/>
+		<hook file="networkmatchmakingsteam.lua" source_file="lib/network/matchmaking/networkmatchmakingsteam"/>
+	</Hooks>
+</mod>
