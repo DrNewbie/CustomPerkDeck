@@ -1,5 +1,5 @@
 <mod name="UnOfficial Hacker Perk Deck">
-	<AssetUpdates id="21989" version="6" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+	<AssetUpdates id="21989" version="7" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
 	<Localization directory="Loc" default="EN.txt"/>
 	<AddFiles directory="Assets">
 		<texture path="guis/dlcs/ecm_jammer/textures/pd2/specialization/icons_atlas" force="true"/>

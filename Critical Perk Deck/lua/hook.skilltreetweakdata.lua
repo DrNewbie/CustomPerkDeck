@@ -62,9 +62,11 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CriticalPerkDeckInit", function(self
 					"player_critical_to_all"
 				},
 				cost = pc1,
-				texture = "guis/textures/pd2/skilltree_2/icons_atlas_2",
-				icon_xy = {9*80, 9*80},
-				grow = {-24, -24},
+				texture_bundle_folder = "mods",
+				icon_xy = {
+					6,
+					1
+				},
 				name_id = "critical_tier_1_name",
 				desc_id = "critical_tier_1_desc"
 			},
@@ -76,9 +78,11 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CriticalPerkDeckInit", function(self
 					"player_ct_reload_speed_multiplier_1"
 				},
 				cost = pc3,
-				texture = "guis/textures/pd2/skilltree_2/icons_atlas_2",
-				icon_xy = {0*80, 12*80},
-				grow = {-24, -24},
+				texture_bundle_folder = "mods",
+				icon_xy = {
+					0,
+					12
+				},
 				name_id = "critical_tier_3_name",
 				desc_id = "critical_tier_3_desc"
 			},
@@ -90,9 +94,11 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CriticalPerkDeckInit", function(self
 					"player_ct_reload_speed_multiplier_2"
 				},
 				cost = pc5,
-				texture = "guis/textures/pd2/skilltree_2/icons_atlas_2",
-				icon_xy = {0*80, 12*80},
-				grow = {-24, -24},
+				texture_bundle_folder = "mods",
+				icon_xy = {
+					0,
+					12
+				},
 				name_id = "critical_tier_5_name",
 				desc_id = "critical_tier_5_desc"
 			},
@@ -103,9 +109,11 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CriticalPerkDeckInit", function(self
 					"player_critical_gain_health_1"
 				},
 				cost = pc7,
-				texture = "guis/textures/pd2/skilltree_2/icons_atlas_2",
-				icon_xy = {11*80, 4*80},
-				grow = {-24, -24},
+				texture_bundle_folder = "mods",
+				icon_xy = {
+					4,
+					11
+				},
 				name_id = "critical_tier_7_name",
 				desc_id = "critical_tier_7_desc"
 			},
@@ -113,12 +121,15 @@ Hooks:PostHook(SkillTreeTweakData, "init", "CriticalPerkDeckInit", function(self
 			{
 				custom = true,
 				upgrades = {
-					"player_critical_gain_health_2"
+					"player_critical_gain_health_2",
+					"player_passive_loot_drop_multiplier"
 				},
 				cost = pc9,
-				texture = "guis/textures/pd2/skilltree_2/icons_atlas_2",
-				icon_xy = {11*80, 4*80},
-				grow = {-24, -24},
+				texture_bundle_folder = "mods",
+				icon_xy = {
+					4,
+					11
+				},
 				name_id = "critical_tier_9_name",
 				desc_id = "critical_tier_9_desc"
 			}
