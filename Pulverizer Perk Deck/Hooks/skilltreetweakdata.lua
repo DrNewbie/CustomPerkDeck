@@ -61,9 +61,10 @@ Hooks:PostHook(SkillTreeTweakData, "init", "PulverizerPerkDeckInit", function(se
 					"player_pulverizer_loss_ammo_1"
 				},
 				cost = 0,
+				texture_bundle_folder = "pulverizer_perk_deck",
 				icon_xy = {
-					2,
-					7
+					0,
+					0
 				},
 				name_id = "pulverizer_tier_1_name",
 				desc_id = "pulverizer_tier_1_desc"
@@ -77,9 +78,10 @@ Hooks:PostHook(SkillTreeTweakData, "init", "PulverizerPerkDeckInit", function(se
 					"player_pulverizer_loss_ammo_2"
 				},
 				cost = 0,
+				texture_bundle_folder = "pulverizer_perk_deck",
 				icon_xy = {
-					2,
-					7
+					1,
+					0
 				},
 				name_id = "pulverizer_tier_3_name",
 				desc_id = "pulverizer_tier_3_desc"
@@ -93,9 +95,10 @@ Hooks:PostHook(SkillTreeTweakData, "init", "PulverizerPerkDeckInit", function(se
 					"player_pulverizer_loss_ammo_3"
 				},
 				cost = 0,
+				texture_bundle_folder = "pulverizer_perk_deck",
 				icon_xy = {
 					2,
-					7
+					0
 				},
 				name_id = "pulverizer_tier_5_name",
 				desc_id = "pulverizer_tier_5_desc"
@@ -108,9 +111,10 @@ Hooks:PostHook(SkillTreeTweakData, "init", "PulverizerPerkDeckInit", function(se
 					"player_pulverizer_loss_ammo_4"
 				},
 				cost = 0,
+				texture_bundle_folder = "pulverizer_perk_deck",
 				icon_xy = {
-					2,
-					7
+					3,
+					0
 				},
 				name_id = "pulverizer_tier_7_name",
 				desc_id = "pulverizer_tier_7_desc"
@@ -124,9 +128,10 @@ Hooks:PostHook(SkillTreeTweakData, "init", "PulverizerPerkDeckInit", function(se
 					"player_pulverizer_loss_ammo_5"
 				},
 				cost = 0,
+				texture_bundle_folder = "pulverizer_perk_deck",
 				icon_xy = {
-					2,
-					7
+					0,
+					1
 				},
 				name_id = "pulverizer_tier_9_name",
 				desc_id = "pulverizer_tier_9_desc"
