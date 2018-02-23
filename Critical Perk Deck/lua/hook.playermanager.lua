@@ -29,7 +29,7 @@ local CriticalPerk_upgrade_value = PlayerManager.upgrade_value
 
 function PlayerManager:upgrade_value(category, upgrade, default)
 	local Ans = CriticalPerk_upgrade_value(self, category, upgrade, default)
-	if upgrade == "reload_speed_multiplier" then
+	if category == "weapon" and upgrade == "passive_reload_speed_multiplier" then
 		Ans = Ans + self:upgrade_value("weapon", "passive_ct_reload_speed_multiplier_1", 0)
 		Ans = Ans + self:upgrade_value("weapon", "passive_ct_reload_speed_multiplier_2", 0)
 	end
