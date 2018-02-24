@@ -21,15 +21,21 @@ if PlayerManager then
 				if type(_ecm_jammers) == "table" then
 					for u_key, data in pairs(_ecm_jammers) do
 						if data.unit and alive(data.unit) and data.unit:base() and (data.unit:base()._jammer_active or data.unit:base()._feedback_active) and data.unit:base()._battery_life and data.unit:base()._battery_life > 0 then
-							damage_ext:restore_health(2, true)
+							local hp = managers.player:upgrade_value("player", "passive_hacker_kill_health", 0)
+							damage_ext:restore_health(hp, true)
 							break
 						end
 					end
 				end
 			end
 			if self:has_category_upgrade("player", "passive_hacker_kill_dodge") and killed_unit:character_damage() and killed_unit:character_damage()._ecm_feedback_hit then
-				self._hacker_kill_dodge = TimerManager:game():time() + 30
+				local dodge = managers.player:upgrade_value("player", "passive_hacker_kill_dodge", 0)
+				self._hacker_kill_dodge = TimerManager:game():time() + dodge[2]
 			end
+		end
+		if self:has_category_upgrade("player", "passive_hacker_kill_faster_small_ecm") then
+			local faster = managers.player:upgrade_value("player", "passive_hacker_kill_faster_small_ecm", 0)
+			self:speed_up_grenade_cooldown(faster)
 		end
 	end)
 	
@@ -39,7 +45,8 @@ if PlayerManager then
 		else
 			local Ans = self._dodge_shot_gain_value or 0
 			if self:has_category_upgrade("player", "passive_hacker_kill_dodge") and self._hacker_kill_dodge and self._hacker_kill_dodge > TimerManager:game():time() then
-				return Ans + 0.2
+				local dodge = managers.player:upgrade_value("player", "passive_hacker_kill_dodge", 0)
+				return Ans + dodge[1]
 			end
 			return Ans
 		end

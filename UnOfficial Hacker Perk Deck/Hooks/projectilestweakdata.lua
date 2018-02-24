@@ -6,8 +6,8 @@ if BlackMarketTweakData then
 			icon = "equipment_ecm_jammer",
 			ability = true,
 			texture_bundle_folder = "ecm_jammer",
-			max_amount = 1,
-			base_cooldown = 10,
+			max_amount = 2,
+			base_cooldown = 100,
 			sounds = {cooldown = "perkdeck_cooldown_over"}
 		}
 	end)

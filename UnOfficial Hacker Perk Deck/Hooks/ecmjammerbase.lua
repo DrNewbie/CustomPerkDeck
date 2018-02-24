@@ -15,8 +15,8 @@ if ECMJammerBase then
 	
 	Hooks:PostHook(ECMJammerBase, "setup", "HackPerkDeck_small_ecm_setup", function(self, battery_life_upgrade_lvl, owner, small_ecm)
 		if small_ecm then
-			self._battery_life = 8
-			self._max_battery_life = 8
+			self._battery_life = 12
+			self._max_battery_life = 12
 			self._low_battery_life = 1
 			self._small_ecm = true
 			self:set_active(true)

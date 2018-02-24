@@ -7,7 +7,7 @@
 	"hacker_perk_desc":" ",
 	
 	"hacker_tier_1_name":"Code Glitch",
-	"hacker_tier_1_desc":"Unlocks and equips the Pocket ECM Devices.\n\nWhile in game you can use the throwable key to activate the Pocket ECM Devices.\n\nActivating the Pocket ECM Devices before the alarm is raised will tigger the jamming effect disabling all electronics and pagers for a ##4## second duration."
+	"hacker_tier_1_desc":"Unlocks and equips the Pocket ECM Devices.\n\nWhile in game you can use the throwable key to activate the Pocket ECM Devices.\n\nActivating the Pocket ECM Devices before the alarm is raised will tigger the jamming effect disabling all electronics and pagers for a ##6## second duration.\n\nThe Pocket ECM Devices has ##2## charges with a ##100## seconds cooldown timer, but each kill you perform will shorten the cooldown time by ##6## seconds."
 	
 	"hacker_tier_3_name":"OpSec",
 	"hacker_tier_3_desc":"You gain ##20%## more health.",

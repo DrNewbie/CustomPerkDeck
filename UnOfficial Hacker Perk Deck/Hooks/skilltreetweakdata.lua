@@ -58,7 +58,8 @@ if SkillTreeTweakData then
 				{
 					custom = true,
 					upgrades = {
-						"small_ecm"
+						"small_ecm",
+						"player_hacker_kill_faster_small_ecm"
 					},
 					cost = 0,
 					texture_bundle_folder = "ecm_jammer",
