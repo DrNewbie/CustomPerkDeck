@@ -9,7 +9,7 @@ Hooks:PostHook(FPCameraPlayerBase, "spawn_melee_item", "pulverizer_MeleeOverhaul
 				parent = self._parent_unit:camera()._camera_unit:get_object(Idstring(v))
 			})
 		end
-	end0
+	end
 end)
 
 Hooks:PostHook(FPCameraPlayerBase, "unspawn_melee_item", "pulverizer_MeleeOverhaulFPCameraPlayerBasePostUnspawnMeleeItem", function(self)
