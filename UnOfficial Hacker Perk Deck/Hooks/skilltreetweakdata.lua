@@ -104,7 +104,8 @@ if SkillTreeTweakData then
 				{
 					custom = true,
 					upgrades = {
-						"player_hacker_kill_dodge"
+						"player_hacker_kill_dodge",
+						"player_hacker_hidden_dodge"
 					},
 					cost = 0,
 					texture_bundle_folder = "ecm_jammer",

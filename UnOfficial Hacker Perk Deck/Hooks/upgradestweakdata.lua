@@ -34,6 +34,16 @@ if UpgradesTweakData then
 				category = "player"
 			}
 		}
+		self.values.player.passive_hacker_hidden_dodge = {0.15}
+		self.definitions.player_hacker_hidden_dodge = {
+			name_id = "player_hacker_hidden_dodge",
+			category = "feature",
+			upgrade = {
+				value = 1,
+				upgrade = "passive_hacker_hidden_dodge",
+				category = "player"
+			}
+		}
 		self.values.player.passive_hacker_crew_kill_health = {1}
 		self.definitions.player_hacker_crew_kill_health = {
 			name_id = "player_hacker_crew_kill_health",

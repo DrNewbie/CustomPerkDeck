@@ -3,7 +3,7 @@
 	"description": " ",
 	"author": "Dr_Newbie",
 	"contact": "http://modwork.shop/21989",
-	"version": "11",
+	"version": "12",
 	"priority": 100,
 	"blt_version": 2,
 	"hooks": [
