@@ -1,0 +1,33 @@
+{
+	"bm_grenade_tool_box":"Tool Box",
+	"bm_grenade_tool_box_desc":" ",
+	"bm_menu_skill_locked_tool_box":"Requires the Throwables perk deck equipped",
+	
+	"hint_switch_throwables_perk_deck":"Throwables Perk Deck",
+	"hint_switch_throwables_fak":"Switch to [ First Aid Kits ]\n\nThis can heal yourself.",
+	"hint_switch_throwables_armour":"Switch to [ Armour ]\n\nThis can regenerate your armor.",
+	"hint_switch_throwables_knife":"Switch to [ Knife ]\n\nUse this to hurt someone.",
+	"hint_switch_throwables_four":"Switch to [ Shuriken ]\n\nUse this to poison someone.",
+	"hint_switch_throwables_jav":"Switch to [ Javelin ]\n\nUse this to hurt someone.",
+	"hint_switch_throwables_concussion":"Switch to [ Concussion Grenade ]\n\nUse this to stun someone.",
+
+	"throwables_perk_name":"Throwables",
+	"throwables_perk_desc":" ",
+	
+	"empty_perk_desc":" ",
+	
+	"throwables_tier_1_name":"Regeneration",
+	"throwables_tier_1_desc":"Unlocks and equips the ##Tool Box##.\n\nYour total ammo capacity is decreased by ##90%##.",
+	
+	"throwables_tier_3_name":"Switching",
+	"throwables_tier_3_desc":"You are albe to swtich your throwables.",
+	
+	"throwables_tier_5_name":"Backup",
+	"throwables_tier_5_desc":" ",
+	
+	"throwables_tier_7_name":"Booster",
+	"throwables_tier_7_desc":" ",
+	
+	"throwables_tier_9_name":"???",
+	"throwables_tier_9_desc":" "
+}
