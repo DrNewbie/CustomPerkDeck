@@ -45,7 +45,7 @@ ThrowablesPerkDeck.tpd_id_List = {
 	"concussion"
 }
 ThrowablesPerkDeck.grenade_cooldown = {
-	30,
+	20,
 	9,
 	0.25,
 	0.25,
