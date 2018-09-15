@@ -1,5 +1,5 @@
 <mod name="Throwables Perk Deck">
-	<AssetUpdates id="22733" version="2" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+	<AssetUpdates id="22733" version="3" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
 	<Localization directory="Loc" default="EN.txt"/>
 	<AddFiles directory="Assets">
 		<texture path="guis/dlcs/tool_box/textures/pd2/specialization/icons_atlas" force="true"/>

@@ -19,8 +19,8 @@
 	"throwables_tier_3_desc":"You are albe to swtich your throwables.",
 	"throwables_tier_5_name":"Backup",
 	"throwables_tier_5_desc":"Now you can use ##SWAN SONG## skill.\n\nIncreases the duration of ##SWAN SONG## to ##20## seconds.",
-	"throwables_tier_7_name":"Hunter",
-	"throwables_tier_7_desc":"Enemies you mark will explode.",
+	"throwables_tier_7_name":"Finger Gun",
+	"throwables_tier_7_desc":"When your ##Tool Box## is ready, you can use your finger to boom enemies.",
 	"throwables_tier_9_name":"Spitfire",
 	"throwables_tier_9_desc":"When your armor breaks nearby enemies will be ignited."
 }
