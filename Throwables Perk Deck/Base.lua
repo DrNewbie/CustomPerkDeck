@@ -34,6 +34,10 @@ ThrowablesPerkDeck.NotiList = {
 	{--stun
 		desc_id = "hint_switch_throwables_concussion",
 		icon_id = "concussion_grenade"
+	},
+	{--frag_com
+		desc_id = "hint_switch_throwables_frag_com",
+		icon_id = "frag_grenade"
 	}
 }
 ThrowablesPerkDeck.tpd_id_List = {
@@ -42,7 +46,8 @@ ThrowablesPerkDeck.tpd_id_List = {
 	"wpn_prj_target",
 	"wpn_prj_four",
 	"wpn_prj_jav",
-	"concussion"
+	"concussion",
+	"frag_com"
 }
 ThrowablesPerkDeck.grenade_cooldown = {
 	20,
@@ -50,6 +55,7 @@ ThrowablesPerkDeck.grenade_cooldown = {
 	0.25,
 	0.25,
 	3,
+	6,
 	6
 }
 
@@ -85,30 +91,34 @@ if BlackMarketManager then
 end
 
 if PlayerManager then
-	local ThrowablesPerkDeck_upgrade_value = PlayerManager.upgrade_value
-	function PlayerManager:upgrade_value(category, id, ...)
-		local Ans = ThrowablesPerkDeck_upgrade_value(self, category, id, ...)
-		if category == "player" and id == "extra_ammo_multiplier" then
-			Ans = Ans * self:upgrade_value("player", "player_tool_box_loss_ammo", 1)
+	function PlayerManager:IsUsingSwitchThrowables()
+		if not self:has_category_upgrade("player", "player_tool_box_switching") then
+			return false
 		end
-		return Ans
+		if managers.blackmarket:equipped_grenade() ~= "tool_box" then
+			return false
+		end
+		return true
+	end
+
+	function PlayerManager:GetSwitchThrowables()
+		if not self:has_category_upgrade("player", "player_tool_box_switching") then
+			return 0
+		end
+		return self._SwitchThrowables or 0
 	end
 
 	function PlayerManager:SwitchThrowables()
-		if not self:has_category_upgrade("player", "player_tool_box_switching") then
+		if not self:IsUsingSwitchThrowables() then
 			return
 		end
 		self._SwitchThrowables = self:GetSwitchThrowables() + 1
 		local NotiList = ThrowablesPerkDeck.NotiList
 		if self._SwitchThrowables > #NotiList then
 			self._SwitchThrowables = 1
-		end
-		if HudChallengeNotification then
-			HudChallengeNotification.queue(
-				managers.localization:to_upper_text("hint_switch_throwables_perk_deck"),
-				managers.localization:to_upper_text(NotiList[self._SwitchThrowables].desc_id),
-				NotiList[self._SwitchThrowables].icon_id
-			)
+		end		
+		self._SwitchThrowables_Msg = 2
+		if managers.hud and Utils:IsInHeist() then
 			managers.hud:set_teammate_grenades(HUDManager.PLAYER_PANEL, {
 				amount = self:can_throw_grenade() and 1 or 0,
 				icon = NotiList[self._SwitchThrowables].icon_hud_id or NotiList[self._SwitchThrowables].icon_id
@@ -116,11 +126,50 @@ if PlayerManager then
 		end
 	end
 
-	Hooks:PostHook(PlayerManager, "add_grenade_amount", "ThrowablesPerkDeck_add_grenade_amount", function(self, amount)
+	ThrowablesPerkDeck_upgrade_value = ThrowablesPerkDeck_upgrade_value or PlayerManager.upgrade_value
+	function PlayerManager:upgrade_value(category, upgrade, ...)
+		local Ans = ThrowablesPerkDeck_upgrade_value(self, category, upgrade, ...)
+		if category == "player" and upgrade == "extra_ammo_multiplier" then
+			Ans = Ans * self:upgrade_value("player", "player_tool_box_loss_ammo", 1)
+		end
+		return Ans
+	end
+	
+	Hooks:PostHook(PlayerManager, "update", "ThrowablesPerkDeck_loop_timer", function(self, t, dt)
+		if not Utils:IsInHeist() then
+			return
+		end
+		if not self:IsUsingSwitchThrowables() then
+			return
+		end
+		if self._SwitchThrowables_Msg then
+			self._SwitchThrowables_Msg = self._SwitchThrowables_Msg - dt
+			if self._SwitchThrowables_Msg <= 0 then
+				self._SwitchThrowables_Msg = nil
+				if HudChallengeNotification and managers.hud then
+					local NotiList = ThrowablesPerkDeck.NotiList
+					HudChallengeNotification.queue(
+						managers.localization:to_upper_text("hint_switch_throwables_perk_deck"),
+						managers.localization:to_upper_text(NotiList[self._SwitchThrowables].desc_id),
+						NotiList[self._SwitchThrowables].icon_id
+					)
+					managers.hud:set_teammate_grenades(HUDManager.PLAYER_PANEL, {
+						amount = self:can_throw_grenade() and 1 or 0,
+						icon = NotiList[self._SwitchThrowables].icon_hud_id or NotiList[self._SwitchThrowables].icon_id
+					})
+				end
+			end	
+		end
+		if not self._SwitchThrowables and self._global and self._global.synced_grenades then
+			self:SwitchThrowables()
+			self:add_grenade_amount(-1, true)
+			self:speed_up_grenade_cooldown(-1)
+		end
+	end)
+
+	Hooks:PostHook(PlayerManager, "add_grenade_amount", "ThrowablesPerkDeck_add_grenade_amount", function(self, amount, finger_gun)
 		if self:player_unit() and alive(self:player_unit()) and amount == -1 then
-			local peer_id = managers.network:session():local_peer():id()
-			local grenade = self._global.synced_grenades[peer_id].grenade or ""
-			if grenade == "tool_box" then
+			if self:IsUsingSwitchThrowables() then
 				local PlyStandard = self:player_unit() and self:player_unit():movement() and self:player_unit():movement()._states.standard or nil
 				if PlyStandard then
 					local tpd_id = self:GetSwitchThrowables()
@@ -130,20 +179,142 @@ if PlayerManager then
 					elseif tpd_id == 2 then
 						self:player_unit():character_damage():_regenerate_armor()
 					end
-					if grenade_cooldown[tpd_id] then
+					if finger_gun then
+						self:speed_up_grenade_cooldown(-1)
+					elseif grenade_cooldown[tpd_id] then
 						self:speed_up_grenade_cooldown(-grenade_cooldown[tpd_id])
 					end
 				end
 			end
 		end
 	end)
-	
-	function PlayerManager:GetSwitchThrowables()
-		if not self:has_category_upgrade("player", "player_tool_box_switching") then
-			return 0
+end
+
+if PlayerStandard then
+	Hooks:PostHook(PlayerStandard, "_start_action_intimidate", "ThrowablesPerkDeck_Perk7_Hunter", function(self, t, secondary)
+		if not managers.player:IsUsingSwitchThrowables() then
+			return
 		end
-		return self._SwitchThrowables or 0
-	end
+		if not managers.player:can_throw_grenade() or managers.player:has_active_timer("replenish_grenades") then
+			return
+		end
+		local skip_alert = managers.groupai:state():whisper_mode()
+		if skip_alert then
+			return
+		end
+		local voice_type, plural, prime_target = self:_get_unit_intimidation_action(not secondary, not secondary, true, false, true, nil, nil, nil, secondary)
+		if prime_target and prime_target.unit and prime_target.unit.base and (prime_target.unit:base().unintimidateable or prime_target.unit:anim_data() and prime_target.unit:anim_data().unintimidateable) then
+			return
+		end
+		if type(voice_type) ~= "string" then
+			return
+		end
+		local interact_type, sound_name = nil
+		local sound_suffix = plural and "plu" or "sin"
+		if (voice_type == "mark_cop" or voice_type == "stop_cop") then
+			if prime_target.unit and prime_target.unit.character_damage then
+				local player_unit = managers.player:player_unit()
+				local weapon_unit = managers.player:equipped_weapon_unit()
+				if player_unit and weapon_unit then
+					local mvec_from_pos = prime_target.unit:position() + Vector3(0, 0, 10)
+					local mvec_direction = Vector3(0, 0, -1)
+					if Network:is_client() then
+						local projectile_type_index = tweak_data.blackmarket:get_index_from_projectile_id("long_arrow_exp")
+						managers.network:session():send_to_host("request_throw_projectile", projectile_type_index, mvec_from_pos, mvec_direction)
+					else
+						local unit = ProjectileBase.throw_projectile("long_arrow_exp", mvec_from_pos, mvec_direction, managers.network:session():local_peer():id())
+						unit:base()._weapon_damage_mult = 1
+						unit:base()._weapon_charge_value = 1
+						unit:base()._weapon_speed_mult = 1
+						unit:base()._weapon_charge_fail = false
+					end
+					local Ncooldown = ThrowablesPerkDeck.grenade_cooldown[managers.player:GetSwitchThrowables()]
+					managers.player:add_grenade_amount(-1, true, true)
+				end
+			end
+		end
+	end)
+end
+
+if PlayerDamage then
+	Hooks:PostHook(PlayerDamage, "_regenerate_armor", "ThrowablesPerkDeck_regenerate_armor", function(self)
+		if not managers.player:IsUsingSwitchThrowables() then
+			return
+		end
+		self._ThrowablesPerkDeck_Perk9 = nil
+	end)
+
+	Hooks:PreHook(PlayerDamage, "_on_damage_event", "ThrowablesPerkDeck_Perk9_FireCounter", function(self)
+		if not managers.player:IsUsingSwitchThrowables() then
+			return
+		end
+		if self._ThrowablesPerkDeck_Perk9 then
+			return
+		end
+		local weapon_unit = managers.player:equipped_weapon_unit()
+		if not weapon_unit then
+			return
+		end
+		if not managers.player:has_category_upgrade("player", "player_tool_box_unknown") then
+			return
+		end
+		local armor_broken = self:_max_armor() > 0 and self:get_real_armor() <= 0
+		if not armor_broken then
+			return
+		end
+		local units = World:find_units("sphere", self._unit:position(), 1000, managers.slot:get_mask("enemies"))
+		if type(units) ~= "table" then
+			return
+		end
+		for _, funit in ipairs(units) do
+			if funit and funit:character_damage() and funit:character_damage().damage_fire then
+				local fdmg = self:_max_armor() or 1
+				fdmg = math.max(fdmg / 10, 1)
+				funit:character_damage():damage_fire({
+					damage = fdmg,
+					attacker_unit = self._unit,
+					weapon_unit = weapon_unit,
+					is_molotov = "fir_com",
+					is_fire_dot_damage = false,
+					variant = "fire",
+					fire_dot_data = {
+							dot_trigger_chance = 100,
+							dot_damage = 25,
+							dot_length = 3,
+							dot_trigger_max_distance = 3000,
+							dot_tick_period = 0.5
+					},
+					col_ray = {
+						position = funit:position(),
+						hit_position = funit:position(),
+						ray = Vector3(0, 0, -1)
+					}
+				})
+				self._ThrowablesPerkDeck_Perk9 = true
+			end
+		end
+	end)
+	
+	Hooks:PostHook(PlayerDamage, "init", "ThrowablesPerkDeck_load_package", function(self)
+		for _, d in pairs(ThrowablesPerkDeck.tpd_id_List) do
+			local data = tweak_data.blackmarket.projectiles[d]
+			if data then
+				local unit_name = Idstring(not Network:is_server() and data.local_unit or data.unit)
+				if not managers.dyn_resource:is_resource_ready(Idstring("unit"), unit_name, managers.dyn_resource.DYN_RESOURCES_PACKAGE) then
+					managers.dyn_resource:load(Idstring("unit"), unit_name, managers.dyn_resource.DYN_RESOURCES_PACKAGE)
+				end
+			end
+		end
+	end)
+	
+	Hooks:PostHook(PlayerDamage, "_on_enter_swansong_event", "ThrowablesPerkDeck_on_enter_swansong_event", function(self)
+		if not managers.player:IsUsingSwitchThrowables() then
+			return
+		end
+		if managers.player:has_active_timer("replenish_grenades") then
+			managers.player:speed_up_grenade_cooldown(999)
+		end		
+	end)
 end
 
 if BlackMarketTweakData then
@@ -164,7 +335,7 @@ if BlackMarketTweakData then
 end
 
 if PlayerEquipment then
-	local ThrowablesPerkDeck_throw_grenade = PlayerEquipment.throw_grenade	
+	local ThrowablesPerkDeck_throw_grenade = PlayerEquipment.throw_grenade
 	function PlayerEquipment:throw_grenade(...)
 		local ST = managers.player:GetSwitchThrowables()
 		local grenade_name = ThrowablesPerkDeck.tpd_id_List[ST]
@@ -210,7 +381,7 @@ if UpgradesTweakData then
 	
 	Hooks:PostHook(UpgradesTweakData, "_player_definitions", "ThrowablesPerkDeck_player_definitions", function(self)
 		self.values.player.player_tool_box_loss_ammo = {
-			0.10
+			0
 		}
 		self.definitions.player_tool_box_loss_ammo = {
 			name_id = "player_tool_box_loss_ammo",
@@ -231,23 +402,26 @@ if UpgradesTweakData then
 				category = "player"
 			}
 		}		
-		self.values.player.player_tool_box_backup = {1}
+		self.values.temporary.berserker_damage_multiplier[3] = {
+			1,
+			20
+		}
 		self.definitions.player_tool_box_backup = {
 			name_id = "player_tool_box_backup",
 			category = "feature",
 			upgrade = {
-				value = 1,
-				upgrade = "player_tool_box_backup",
-				category = "player"
+				value = 3,
+				upgrade = "berserker_damage_multiplier",
+				category = "temporary"
 			}
 		}
-		self.values.player.player_tool_box_booster = {1}
-		self.definitions.player_tool_box_booster = {
-			name_id = "player_tool_box_booster",
+		self.values.player.player_tool_box_hunter = {1}
+		self.definitions.player_tool_box_hunter = {
+			name_id = "player_tool_box_hunter",
 			category = "feature",
 			upgrade = {
 				value = 1,
-				upgrade = "player_tool_box_booster",
+				upgrade = "player_tool_box_hunter",
 				category = "player"
 			}
 		}
@@ -370,7 +544,7 @@ if SkillTreeTweakData then
 				{
 					custom = true,
 					upgrades = {
-						"player_tool_box_booster"
+						"player_tool_box_hunter"
 					},
 					cost = 0,
 					texture_bundle_folder = "tool_box",
@@ -414,5 +588,15 @@ if NetworkMatchMakingSTEAM then
 		if attributes_list.numbers and attributes_list.numbers[3] < 3 then
 			return false
 		end
+	end
+end
+
+if StatisticsManager then
+	local ThrowablesPerkDeck_killed_by_anyone = StatisticsManager.killed_by_anyone
+	function StatisticsManager:killed_by_anyone(data, ...)
+		if not alive(data.weapon_unit) or not data.weapon_unit:base().get_name_id then
+			return
+		end
+		ThrowablesPerkDeck_killed_by_anyone(self, data, ...)
 	end
 end
