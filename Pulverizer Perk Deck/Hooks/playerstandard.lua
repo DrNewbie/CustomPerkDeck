@@ -17,6 +17,7 @@ Hooks:PostHook(PlayerStandard, "_do_melee_damage", "pulverizer_melee_event", fun
 			if charge_lerp_value < 0.99 then
 				InstantExplosiveBulletBase:on_collision(col_ray, player_unit:inventory()._available_selections[1].unit, player_unit, melee_tweak.min_damage and melee_tweak.min_damage*100 or 1, false)
 			else
+				InstantExplosiveBulletBase:on_collision(col_ray, player_unit:inventory()._available_selections[1].unit, player_unit, melee_tweak.min_damage and melee_tweak.min_damage*500 or 1, false)
 				local pos_boom = nil
 				if col_ray.hit_position then
 					pos_boom = col_ray.hit_position
