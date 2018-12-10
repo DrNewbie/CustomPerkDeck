@@ -1,0 +1,95 @@
+<mod name="Flame Magic Perk Deck">
+	<AssetUpdates id="24083" version="2" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+	<Hooks directory="Hooks">
+		<hook file="hook.skilltreetweakdata.lua" source_file="lib/tweak_data/skilltreetweakdata"/>
+		<hook file="hook.upgradestweakdata.lua" source_file="lib/tweak_data/upgradestweakdata"/>
+		<hook file="hook.blackmarketmanager.lua" source_file="lib/managers/blackmarketmanager"/>
+		<hook file="hook.newflamethrowerbase.lua" source_file="lib/units/weapons/newflamethrowerbase"/>
+		<hook file="hook.playerdamage.lua" source_file="lib/units/beings/player/playerdamage"/>
+		<hook file="hook.playermanager.lua" source_file="lib/managers/playermanager"/>
+		<hook file="hook.copdamage.lua" source_file="lib/units/enemies/cop/copdamage"/>
+		<hook file="hook.fpcameraplayerbase.lua" source_file="lib/units/cameras/fpcameraplayerbase"/>
+	</Hooks>
+	<Localization directory="Loc" default="EN.txt"/>
+	<AddFiles directory="Assets">
+		<texture path="guis/dlcs/magic_perk_deck/textures/pd2/blackmarket/icons/weapons/mpd_flamer" force="true"/>
+		<texture path="guis/dlcs/magic_perk_deck/textures/pd2/blackmarket/icons/weapons/mpd_ffball" force="true"/>
+		<texture path="guis/dlcs/magic_perk_deck/textures/pd2/specialization/icons_atlas" force="true"/>
+		<unit path="units/mods/weapons/wpn_fps_fla_mk2/wpn_fps_mpd_flamer" force="true"/>
+		<unit path="units/mods/weapons/wpn_fps_fla_mk2/wpn_fps_mpd_flamer_npc" force="true"/>
+		<unit path="units/mods/weapons/wpn_fps_fla_mk2/wpn_fps_mpd_ffball" force="true"/>
+		<unit path="units/mods/weapons/wpn_fps_fla_mk2/wpn_fps_mpd_ffball_npc" force="true"/>
+	</AddFiles>
+	<WeaponNew>
+		<weapon
+			id="mpd_flamer" 
+			based_on="flamethrower_mk2" 
+			texture_bundle_folder="magic_perk_deck" 
+			name_id="magic_tier_1_name" 
+			desc_id ="magic_tier_1_desc" 
+			description_id="magic_tier_1_desc" 
+			>
+			<stats
+				concealment="30"
+			/>
+			<animations
+				reload_name_id="equip_flamethrower"
+				has_steelsight_stance="true"
+			/>
+			<timers
+				reload_empty="3.2"
+			/>
+			<use_data
+				selection_index="2"
+			/>
+			<categories>
+				<value_node value="flamethrower"/>
+			</categories>
+		</weapon>
+		<factory id="wpn_fps_mpd_flamer" unit="units/mods/weapons/wpn_fps_fla_mk2/wpn_fps_mpd_flamer">
+			<default_blueprint>
+				<value_node value="wpn_fps_upg_i_autofire"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_upg_i_autofire"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+	<WeaponNew>
+		<weapon
+			id="mpd_ffball" 
+			based_on="flamethrower_mk2" 
+			texture_bundle_folder="magic_perk_deck" 
+			name_id="magic_tier_3_name" 
+			desc_id ="magic_tier_3_desc" 
+			description_id="magic_tier_3_desc" 
+			>
+			<stats
+				concealment="30"
+			/>
+			<animations
+				reload_name_id="equip_flamethrower"
+				has_steelsight_stance="true"
+			/>
+			<timers
+				reload_empty="3.2"
+			/>
+			<use_data
+				selection_index="1"
+			/>
+			<categories>
+				<value_node value="flamethrower"/>
+			</categories>
+		</weapon>
+		<factory id="wpn_fps_mpd_ffball" unit="units/mods/weapons/wpn_fps_fla_mk2/wpn_fps_mpd_ffball">
+			<default_blueprint>
+				<value_node value="wpn_fps_upg_i_singlefire"/>
+			</default_blueprint>
+			<uses_parts>
+				<value_node value="wpn_fps_upg_i_singlefire"/>
+			</uses_parts>
+		</factory>
+		<stance/>
+	</WeaponNew>
+</mod>

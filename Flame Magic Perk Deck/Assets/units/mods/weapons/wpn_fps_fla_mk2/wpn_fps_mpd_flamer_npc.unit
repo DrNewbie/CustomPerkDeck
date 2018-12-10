@@ -1,0 +1,11 @@
+<unit type="wpn" slot="1" >
+	<object file="units/pd2_dlc_bbq/weapons/wpn_fps_fla_mk2/wpn_fps_fla_mk2" />
+	<dependencies>
+	</dependencies>
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+			<extension name="base" class="NPCShotgunBase" >
+			<var name="name_id" value="x_judge_crew" />
+		</extension>
+	</extensions>
+</unit>

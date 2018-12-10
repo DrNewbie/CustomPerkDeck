@@ -1,0 +1,19 @@
+{
+	"magic_perk_name":"Flame Magic",
+	"magic_perk_desc":" ",
+	
+	"magic_tier_1_name":"Flame Thrower",
+	"magic_tier_1_desc":"You gain the ability to shoot flames.\n\nCost: ##1 MP##\nCooldown: ##0s##",
+	
+	"magic_tier_3_name":"Fireball",
+	"magic_tier_3_desc":"You gain the ability to shoot fireballs.\n\nCost: ##8 MP##\nCooldown: ##8s##",
+	
+	"magic_tier_5_name":"Fire Bomb",
+	"magic_tier_5_desc":"When your armor breaks, you will automatically drop a flame bomb (incendiary grenade/molotov).\n\nCost: ##0 MP##\nCooldown: ##5s##",
+	
+	"magic_tier_7_name":"Meteorite",
+	"magic_tier_7_desc":"You gain permanent immunity to fire damage. Ability cooldown is reduced and you will recharge/regain MP while standing on flames.",
+	
+	"magic_tier_9_name":"Regeneration",
+	"magic_tier_9_desc":"Enemies burning from your flames will regenerate your HP/MP."
+}
