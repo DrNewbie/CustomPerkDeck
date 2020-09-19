@@ -79,7 +79,7 @@ function CopDamage:damage_bullet(attack_data, ...)
 					if character and not characters_hit[hit_body:unit():key()] then
 						characters_hit[hit_body:unit():key()] = true
 						attack_data.col_ray.unit = hit_body:unit()
-						InstantExplosiveBulletBase:on_collision(attack_data.col_ray, player:inventory():equipped_unit(), player, attack_data.damage*1.25 or 1, false)
+						InstantExplosiveBulletBase:on_collision(attack_data.col_ray, player:inventory():equipped_unit(), player, attack_data.damage*0.25 or 1, false)
 					end
 				end
 				attack_data.col_ray.unit = old_col_ray_unit

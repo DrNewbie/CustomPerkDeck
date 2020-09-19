@@ -1,5 +1,5 @@
 <mod name="Fully Charged Perk Deck">
-	<AssetUpdates id="Fully Charged Perk Deck" version="13">
+	<AssetUpdates id="Fully Charged Perk Deck" version="14">
         <custom_provider version_api_url="https://drnewbie.github.io/CustomPerkDeck//UpdateProvider/Fully%20Charged%20Perk%20Deck.txt" download_url="https://drnewbie.github.io/CustomPerkDeck//UpdateProvider/Fully%20Charged%20Perk%20Deck.zip"/>
     </AssetUpdates>
 	<Localization directory="Loc" default="EN.txt"/>
