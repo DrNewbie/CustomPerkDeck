@@ -1,4 +1,4 @@
-Hooks:PostHook(UpgradesTweakData, "_player_definitions", "FullyChargedPerkDeckTierInit", function(self)
+Hooks:PostHook(UpgradesTweakData, "_player_definitions", "F_"..Idstring("FullyChargedPerkDeckTierInit"):key(), function(self)
 	self.values.player.passive_fully_charged_armor2damage = {true}
 	self.definitions.player_fully_charged_armor2damage = {
 		name_id = "player_fully_charged_armor2damage",

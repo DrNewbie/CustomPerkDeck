@@ -62,7 +62,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "FullyChargedPerkDeckInit", function(
 				},
 				cost = 0,
 				icon_xy = {
-					3,
+					1,
 					0
 				},
 				name_id = "fullycharged_tier_1_name",
@@ -76,7 +76,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "FullyChargedPerkDeckInit", function(
 				},
 				cost = 0,
 				icon_xy = {
-					6,
+					1,
 					0
 				},
 				name_id = "fullycharged_tier_3_name",
@@ -86,13 +86,12 @@ Hooks:PostHook(SkillTreeTweakData, "init", "FullyChargedPerkDeckInit", function(
 			{
 				custom = true,
 				upgrades = {
-					"player_tier_armor_multiplier_1",
-					"player_tier_armor_multiplier_2",
-					"player_fully_charged_explosive_headshot_1"
+					"player_fully_charged_explosive_headshot_1",
+					"player_fully_charged_explosive_headshot_2"
 				},
 				cost = 0,
 				icon_xy = {
-					6,
+					1,
 					0
 				},
 				name_id = "fullycharged_tier_5_name",
@@ -102,12 +101,13 @@ Hooks:PostHook(SkillTreeTweakData, "init", "FullyChargedPerkDeckInit", function(
 			{
 				custom = true,
 				upgrades = {
-					"player_tier_armor_multiplier_3",
-					"player_fully_charged_explosive_headshot_2"
+					"player_tier_armor_multiplier_1",
+					"player_tier_armor_multiplier_2",
+					"player_tier_armor_multiplier_3"
 				},
 				cost = 0,
 				icon_xy = {
-					6,
+					1,
 					0
 				},
 				name_id = "fullycharged_tier_7_name",
@@ -122,8 +122,10 @@ Hooks:PostHook(SkillTreeTweakData, "init", "FullyChargedPerkDeckInit", function(
 					"player_passive_loot_drop_multiplier"
 				},
 				cost = 0,
-				texture = "guis/textures/pd2/skilltree_2/icons_atlas_2",
-				icon_xy = {9*80, 11*80, 80, 80},
+				icon_xy = {
+					1,
+					0
+				},
 				name_id = "fullycharged_tier_9_name",
 				desc_id = "fullycharged_tier_9_desc"
 			}
