@@ -1,6 +1,6 @@
 <mod name="Pulverizer Perk Deck">
-	<AssetUpdates id="Pulverizer Perk Deck" version="12">
-        <custom_provider version_api_url="https://drnewbie.github.io/CustomPerkDeck//UpdateProvider/Pulverizer Perk Deck.txt" download_url="https://drnewbie.github.io/CustomPerkDeck/UpdateProvider/Pulverizer Perk Deck.zip"/>
+	<AssetUpdates id="Pulverizer Perk Deck" version="13">
+        <custom_provider version_api_url="https://drnewbie.github.io/CustomPerkDeck//UpdateProvider/Pulverizer%20Perk%20Deck.txt" download_url="https://drnewbie.github.io/CustomPerkDeck//UpdateProvider/Pulverizer%20Perk%20Deck.zip"/>
     </AssetUpdates>
 	<Localization directory="Loc" default="EN.txt"/>
 	<AddFiles directory="Assets">
