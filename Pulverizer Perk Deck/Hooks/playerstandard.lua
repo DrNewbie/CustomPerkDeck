@@ -1,3 +1,9 @@
+local __pos_offset = function ()
+	local ang = math.random() * 360 * math.pi
+	local rad = math.random(20, 30)
+	return Vector3(math.cos(ang) * rad, math.sin(ang) * rad, 0)
+end
+
 Hooks:PostHook(PlayerStandard, "_do_melee_damage", "pulverizer_melee_event", function(self, t, bayonet_melee, melee_hit_ray)
 	if managers.player:has_category_upgrade("player", "passive_pulverizer_melee_event") then
 		local player_unit = managers.player:player_unit()
@@ -17,7 +23,6 @@ Hooks:PostHook(PlayerStandard, "_do_melee_damage", "pulverizer_melee_event", fun
 			if charge_lerp_value < 0.99 then
 				InstantExplosiveBulletBase:on_collision(col_ray, player_unit:inventory()._available_selections[1].unit, player_unit, melee_tweak.min_damage and melee_tweak.min_damage*100 or 1, false)
 			else
-				InstantExplosiveBulletBase:on_collision(col_ray, player_unit:inventory()._available_selections[1].unit, player_unit, melee_tweak.min_damage and melee_tweak.min_damage*500 or 1, false)
 				local pos_boom = nil
 				if col_ray.hit_position then
 					pos_boom = col_ray.hit_position
@@ -25,6 +30,11 @@ Hooks:PostHook(PlayerStandard, "_do_melee_damage", "pulverizer_melee_event", fun
 					pos_boom = col_ray.position
 				elseif col_ray.unit and alive(col_ray.unit) and col_ray.unit:character_damage() then
 					pos_boom = col_ray.unit:position()
+				end
+				local hit_unit = col_ray.unit
+				local is_shield = hit_unit:in_slot(8) and alive(hit_unit:parent())
+				if is_shield then
+					hit_unit = hit_unit:parent()
 				end
 				if pos_boom then
 					local range = melee_tweak.range and melee_tweak.range * 4 or 500
@@ -51,6 +61,29 @@ Hooks:PostHook(PlayerStandard, "_do_melee_damage", "pulverizer_melee_event", fun
 						no_raycast_check_characters = false
 					})
 				end
+				if hit_unit and hit_unit.character_damage and hit_unit:character_damage() and hit_unit:character_damage().damage_fire then
+					hit_unit:character_damage():damage_fire({
+						variant = "fire",
+						damage = 1,
+						weapon_unit = weapon_unit,
+						attacker_unit = user_unit,
+						col_ray = col_ray,
+						armor_piercing = true,
+						fire_dot_data = {
+							dot_trigger_chance = "100",
+							dot_damage = "10",
+							dot_length = "3.1",
+							dot_trigger_max_distance = "3000",
+							dot_tick_period = "0.5"
+						}
+					})
+				end
+				local old_pos = col_ray.position
+				for i = 1, 3 do
+					col_ray.position = old_pos + __pos_offset()
+					InstantExplosiveBulletBase:on_collision(col_ray, player_unit:inventory()._available_selections[1].unit, player_unit, melee_tweak.min_damage and melee_tweak.min_damage*500 or 1, false)
+				end
+				col_ray.position = old_pos
 			end
 		end
 	end

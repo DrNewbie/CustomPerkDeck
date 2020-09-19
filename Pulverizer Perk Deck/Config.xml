@@ -1,5 +1,7 @@
 <mod name="Pulverizer Perk Deck">
-	<AssetUpdates id="21984" version="11" provider="modworkshop" use_local_dir="true" use_local_path="true"/>
+	<AssetUpdates id="Pulverizer Perk Deck" version="12">
+        <custom_provider version_api_url="https://drnewbie.github.io/CustomPerkDeck//UpdateProvider/Pulverizer Perk Deck.txt" download_url="https://drnewbie.github.io/CustomPerkDeck/UpdateProvider/Pulverizer Perk Deck.zip"/>
+    </AssetUpdates>
 	<Localization directory="Loc" default="EN.txt"/>
 	<AddFiles directory="Assets">
 		<texture path="guis/dlcs/pulverizer_perk_deck/textures/pd2/specialization/icons_atlas" force="true"/>
