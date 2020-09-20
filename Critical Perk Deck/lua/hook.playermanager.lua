@@ -6,7 +6,7 @@ end
 
 local CriticalPerk_critical_hit_chance = PlayerManager.critical_hit_chance
 
-function PlayerManager:critical_hit_chance()
+function PlayerManager:critical_hit_chance(...)
 	local addon = self:addon_critical_hit_chance()
 	if addon > 0 and math.random() < addon then
 		local player = self:player_unit()
@@ -22,7 +22,7 @@ function PlayerManager:critical_hit_chance()
 		end
 		return 100
 	end
-	return CriticalPerk_critical_hit_chance(self)
+	return CriticalPerk_critical_hit_chance(self, ...)
 end
 
 local CriticalPerk_upgrade_value = PlayerManager.upgrade_value
