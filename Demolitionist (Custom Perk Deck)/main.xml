@@ -1,0 +1,22 @@
+<mod name="Demolitionist (Custom Perk Deck)">
+	<Localization directory="Loc" default="EN.txt"/>
+	<AssetUpdates id="Demolitionist (Custom Perk Deck)" version="1">
+		<custom_provider 
+			version_api_url="https://drnewbie.github.io/CustomPerkDeck/UpdateProvider/Demolitionist%20(Custom%20Perk%20Deck).txt" 
+			download_url="https://drnewbie.github.io/CustomPerkDeck/UpdateProvider/Demolitionist%20(Custom%20Perk%20Deck).zip"
+		/>
+	<AddFiles directory="Assets">
+		<png path="guis/dlcs/weapon_c4/textures/pd2/blackmarket/icons/grenades/weapon_c4"/>
+		<png path="guis/dlcs/weapon_c4/textures/pd2/specialization/icons_atlas"/>
+		<unit path="units/payday2/equipment/gen_equipment_tripmine/gen_c4_bomb_husk"/>
+	</AddFiles>
+	<Hooks directory="Hooks">
+		<hook file="Base.lua" source_file="lib/managers/playermanager"/>
+		<hook file="Base.lua" source_file="lib/units/beings/player/playerdamage"/>
+		<hook file="Base.lua" source_file="lib/units/weapons/trip_mine/tripminebase"/>
+		<hook file="Base.lua" source_file="lib/network/matchmaking/networkmatchmakingsteam"/>
+		<hook file="Tweakdata.lua" source_file="lib/tweak_data/upgradestweakdata"/>
+		<hook file="Tweakdata.lua" source_file="lib/tweak_data/skilltreetweakdata"/>
+		<hook file="Tweakdata.lua" source_file="lib/tweak_data/blackmarkettweakdata"/>
+	</Hooks>
+</mod>

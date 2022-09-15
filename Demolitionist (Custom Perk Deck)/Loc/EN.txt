@@ -1,0 +1,21 @@
+{
+  "weapon_c4_perk_name": "Demolitionist",
+  "weapon_c4_perk_desc": "Demolitionists, also known as explosive workers, demolition experts, and blasters, are responsible for dismantling, razing, wrecking or demolishing any structure or any part thereof. Their work also often involves loosening, removing, or displacing earth, rock, or even Police Task Forces using explosives.",
+  "bm_grenade_weapon_c4": "Tactical C4 Bomb",
+  "bm_grenade_weapon_c4_desc": "Throwable trip mines that deal double damage.\n\nThis weapon are able to open safes and doors by placing and shooting them.",
+  "bm_menu_skill_locked_weapon_c4": "Requires the Demolitionist Perk Deck equipped!",
+  "menu_c4bombdeck_1_name": "One in one Hand...",
+  "menu_c4bombdeck_1_desc": "Unlocks and equips the ##Tactical C4 Bomb##.\n\nChanging to another perk deck will make the Tactical C4 Bomb unavailable again. The Tactical C4 Bomb replaces the current throwable, is equipped in the throwable slot and can be switched out if desired.\n\nYour total ammo capacity is decreased by ##66%##.",
+  "menu_c4bombdeck_3_name": "...Two in the Bag..!",
+  "menu_c4bombdeck_3_desc": "All ammo is forcibly and automatically converted to the ##Tactical C4 Bomb##.\n\nYou pick up ##50%## more ammo.",
+  "menu_c4bombdeck_5_name": "Explosive Reactive Armor",
+  "menu_c4bombdeck_5_desc": "You're able to do ##Area-Destruction## and restore all armor. You need to have at least one ##Tactical C4 Bomb## left and the armor depleting for it to happen.",
+  "menu_c4bombdeck_7_name": "Short Fuse",
+  "menu_c4bombdeck_7_desc": "You become invulnerable for ##0.8## seconds upon full armor depletion. This effect cannot occur more often than once every ##5## seconds.",
+  "menu_c4bombdeck_9_name": "The Nuclear Option",
+  "menu_c4bombdeck_9_desc": "Upon getting downed, you have a ##100%## chance to instantly get revived, if you have at least one ##Tactical C4 Bomb##. It will also trigger ##Area-Destruction##.",
+  "menu_deckall_2_desc": "The headshot damage of your ranged weapons is increased by ##25%##.",
+  "menu_deckall_4_desc": "Your concealment is increased by ##1##.\n\nYour armor's movement speed penalty is decreased by ##15%##.\n\nThe experience when you complete a day of a heist is increased ##45%##.",
+  "menu_deckall_6_desc": "You can now equip the Armor Bag as a deployable.\n\nYour ammo pickup rate is increased by ##35%##, for a total of ##135%##.",
+  "menu_deckall_8_desc": "The damage of your ranged weapons is increased by ##5%##.\n\nYou interact with Doctor Bags ##20%## faster.\n\nNote: The damage bonus from this perk does not apply to throwables, grenade launchers, and rocket launchers."
+}
