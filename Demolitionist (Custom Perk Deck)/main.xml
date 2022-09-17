@@ -1,10 +1,11 @@
 <mod name="Demolitionist (Custom Perk Deck)">
 	<Localization directory="Loc" default="EN.txt"/>
-	<AssetUpdates id="Demolitionist (Custom Perk Deck)" version="1">
+	<AssetUpdates id="Demolitionist (Custom Perk Deck)" version="2">
 		<custom_provider 
-			version_api_url="https://drnewbie.github.io/CustomPerkDeck/UpdateProvider/Demolitionist%20(Custom%20Perk%20Deck).txt" 
-			download_url="https://drnewbie.github.io/CustomPerkDeck/UpdateProvider/Demolitionist%20(Custom%20Perk%20Deck).zip"
+			version_api_url="https://modworkshop.net/mod/39581https://drnewbie.github.io/Mess/UpdateProvider/Demolitionist%20(Custom%20Perk%20Deck).txt" 
+			download_url="https://modworkshop.net/mod/39581https://drnewbie.github.io/Mess/UpdateProvider/Demolitionist%20(Custom%20Perk%20Deck).zip"
 		/>
+	</AssetUpdates>
 	<AddFiles directory="Assets">
 		<png path="guis/dlcs/weapon_c4/textures/pd2/blackmarket/icons/grenades/weapon_c4"/>
 		<png path="guis/dlcs/weapon_c4/textures/pd2/specialization/icons_atlas"/>
