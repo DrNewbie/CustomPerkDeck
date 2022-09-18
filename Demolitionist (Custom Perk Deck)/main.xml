@@ -2,8 +2,8 @@
 	<Localization directory="Loc" default="EN.txt"/>
 	<AssetUpdates id="Demolitionist (Custom Perk Deck)" version="2">
 		<custom_provider 
-			version_api_url="https://drnewbie.github.io/Mess/UpdateProvider/Demolitionist%20(Custom%20Perk%20Deck).txt" 
-			download_url="https://drnewbie.github.io/Mess/UpdateProvider/Demolitionist%20(Custom%20Perk%20Deck).zip"
+			version_api_url="https://drnewbie.github.io/CustomPerkDeck/UpdateProvider/Demolitionist%20(Custom%20Perk%20Deck).txt" 
+			download_url="https://drnewbie.github.io/CustomPerkDeck/UpdateProvider/Demolitionist%20(Custom%20Perk%20Deck).zip"
 		/>
 	</AssetUpdates>
 	<AddFiles directory="Assets">
