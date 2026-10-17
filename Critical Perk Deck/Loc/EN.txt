@@ -10,5 +10,5 @@
     "critical_tier_7_name": "Critical Health",
     "critical_tier_7_desc": "When your armor breaks, each successful Addon-Critical gives you ##4## life points.",
     "critical_tier_9_name": "Over Critical",
-    "critical_tier_9_desc": "Life point is increased to ##8## now."
+    "critical_tier_9_desc": "Life point is increased to ##12## now."
 }
