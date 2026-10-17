@@ -7,6 +7,7 @@ end
 local CriticalPerk_critical_hit_chance = PlayerManager.critical_hit_chance
 
 function PlayerManager:critical_hit_chance(...)
+	local ans = CriticalPerk_critical_hit_chance(self, ...)
 	local addon = self:addon_critical_hit_chance()
 	if addon > 0 and math.random() < addon then
 		local player = self:player_unit()
@@ -20,16 +21,16 @@ function PlayerManager:critical_hit_chance(...)
 				end
 			end
 		end
-		return 100
+		return 1
 	end
-	return CriticalPerk_critical_hit_chance(self, ...)
+	return ans
 end
 
 local CriticalPerk_upgrade_value = PlayerManager.upgrade_value
 
-function PlayerManager:upgrade_value(category, upgrade, default)
-	local Ans = CriticalPerk_upgrade_value(self, category, upgrade, default)
-	if category == "weapon" and upgrade == "passive_reload_speed_multiplier" then
+function PlayerManager:upgrade_value(category, upgrade, ...)
+	local Ans = CriticalPerk_upgrade_value(self, category, upgrade, ...)
+	if tostring(category) == "weapon" and tostring(upgrade) == "passive_reload_speed_multiplier" then
 		Ans = Ans + self:upgrade_value("weapon", "passive_ct_reload_speed_multiplier_1", 0)
 		Ans = Ans + self:upgrade_value("weapon", "passive_ct_reload_speed_multiplier_2", 0)
 	end
